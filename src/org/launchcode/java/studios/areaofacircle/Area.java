@@ -6,23 +6,18 @@ public class Area {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         print("Enter a radius: ");
-
-        try {
-            Double radius = in.nextDouble();
-        } catch (Exception error) {
-            println("Please Enter a Number");
+        Double radius = null;
+        while (radius == null || radius <= 0) {
+            if (in.hasNextDouble() && in.nextDouble() > 0) {
+                radius = in.nextDouble();
+            } else {
+                println("Please Enter a Number Greater than 0");
+                print("Enter a radius: ");
+                in.next();
+            }
         }
-//        println("radius: " + radius);
-//        double doubleRadius = 0.0;
-//        try {
-//            doubleRadius = Double.parseDouble(radius);
-//        } catch (ArithmeticException e){
-//            println("Please Enter a Number");
-//        }
-        if (radius != 0.0) {
-            Double area = Circle.getArea(radius);
-            println("The area of a circle of radius " + radius + " is: " + area);
-        }
+        Double area = Circle.getArea(radius);
+        println("The area of a circle of radius " + radius + " is: " + area);
     }
 
     public static void println(String line) {
