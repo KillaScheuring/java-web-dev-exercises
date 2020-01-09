@@ -15,11 +15,15 @@ public class CharCounter {
 
         String userChoice = in.nextLine();
         String userString = "";
+        while (!userChoice.equals("0") && !userChoice.equals("1")){
+            println("Enter 0 to enter a string to count \nEnter 1 to enter a file to count");
 
+            userChoice = in.nextLine();
+        }
         if (userChoice.equals("0")){
             print("Enter a string to count: ");
             userString = in.nextLine().toUpperCase();
-        } else if (userChoice.equals("1")){
+        } else {
             print("Enter the file path: ");
             String fileLocation = in.nextLine();
             File file = new File(fileLocation);
